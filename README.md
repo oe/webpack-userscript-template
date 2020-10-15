@@ -19,7 +19,7 @@ I recommend you using [Chrome](https://www.google.com/chrome/) and [Tampermonkey
 1. enable insecure localhost: navigate to `chrome://flags/#allow-insecure-localhost`, enable insecure localhost
 2. enable navigate to `chrome://extensions/?id=dhdgffkkebhmkfjojejmpbldmpobfkfo`(Chrome manage extensions page of `Tampermonkey`) and enable `Allow access to file URLs` (you need to manual reload page when dev userscript, see [#475](https://github.com/Tampermonkey/tampermonkey/issues/475#issuecomment-348594785) for more detail)
 
-### dev
+### Dev
 
 1. install dependencies by run `yarn` (or `npm i`)
 2. open dev server by run `yarn dev` (or `npm run dev`)
@@ -29,9 +29,9 @@ I recommend you using [Chrome](https://www.google.com/chrome/) and [Tampermonkey
 6. config webpack by modifying `webpack.config.ts`, you need to rerun `yarn dev` to make it take effect
 7. dev code in `src` folder, reload your target webpage after userscript changed
 
-## build
+## Build
 
 run cmd `yarn build`(or `npm run build`), your userscript should be in `dist` folder with extension `.user.js`
 
-## references
+## References
 1. [Tampermonkey docs](https://www.tampermonkey.net/documentation.php)
