@@ -1,6 +1,7 @@
 {
-  "name": "download-git-userscript",
+  "name": "webpack-userscript-template",
   "version": "0.2.3",
+  "description": "create your own userscript with modern technology powered by webpack",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config-name main --host 127.0.0.1 --watch-poll",
     "lint": "eslint .",
@@ -11,6 +12,9 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@types/file-saver": "^2.0.1",
+    "@types/node": "^14.11.8",
+    "@types/webpack": "^4.41.22",
+    "@types/webpack-dev-server": "^3.11.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "babel-loader": "^8.1.0",
@@ -18,6 +22,7 @@
     "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "ts-loader": "^8.0.3",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

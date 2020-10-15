@@ -1,19 +1,32 @@
-const path = require('path')
-const WebpackUserscript = require('webpack-userscript')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const pkg = require('./package.json')
+import path from 'path'
+import webpack from 'webpack'
+import WebpackUserscript from 'webpack-userscript'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import userscriptConfig from './userscript.config'
 
 const outputPath = path.resolve(__dirname, 'dist')
 const isDev = process.env.NODE_ENV === 'development'
 const PORT = 8080
 const enableHTTPS = true
 
-module.exports = {
+const devServerOpenPage: string[] = (() => {
+  const pages: string[] = []
+  if (userscriptConfig.openScriptInstallPage) {
+    pages.push(`${enableHTTPS ? 'https' : 'http'}://127.0.0.1:${PORT}/${userscriptConfig.scriptFileName}.proxy.user.js`)
+  }
+  if (userscriptConfig.openTargetPage) {
+    pages.push(userscriptConfig.openTargetPage)
+  }
+  return pages
+})()
+
+
+const config: webpack.Configuration = {
   mode: 'production',
   entry: path.join(__dirname, 'src/index.ts'),
   output: {
     path: outputPath,
-    filename: `${pkg.name}.js`
+    filename: `${userscriptConfig.scriptFileName}.js`
   },
   target: 'web',
   module: {
@@ -47,6 +60,8 @@ module.exports = {
     port: PORT,
     writeToDisk: true,
     contentBase: outputPath,
+    open: !!(userscriptConfig.openTargetPage && userscriptConfig.openScriptInstallPage),
+    openPage: devServerOpenPage,
     hot: false,
     inline: false,
     liveReload: false
@@ -54,23 +69,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new WebpackUserscript({
-      headers ({ name, version }) {
-        return {
-          name: 'webpack userscript template',
-          'name:zh-CN': 'webpack userscript 模版',
-          version: version,
-          author: 'Saiya',
-          namespace: 'https://app.userscript.com',
-          description: 'userscript developed with modern tech powered by webpack',
-          'description:zh-CN': '使用当前流行的前端技术开发 userscript 并使用 webpack 构建',
-          homepageURL: 'https://github.com/oe/download-git-userscript',
-          supportURL: 'https://github.com/oe/download-git-userscript/issues',
-          connect: ['raw.githubusercontent.com'],
-          match: ['https://github.com/*', 'https://gist.github.com/*'],
-          grant: ['GM_download', 'GM_xmlhttpRequest', 'GM_setClipboard'],
-          noframes: true
-        }
-      },
+      headers: userscriptConfig.scriptHeaders,
       proxyScript: {
         baseUrl: 'file://' + encodeURI(outputPath),
         enable: isDev
@@ -79,3 +78,5 @@ module.exports = {
     })
   ]
 }
+
+export default config
