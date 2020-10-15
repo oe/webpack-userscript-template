@@ -11,7 +11,7 @@ I recommend you using [Chrome](https://www.google.com/chrome/) and [Tampermonkey
 
 ### Prepare materials
 1. create your own repo by click the green button [Use this template](https://github.com/oe/webpack-userscript-template/generate)
-2. install a user script manager for your browser,  [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) is recommended for Chrome, for more just check [greasyfork](https://greasyfork.org/en#home-step-1)
+2. install a user script manager for your browser,  [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) is recommended for Chrome, for more alternatives just check [greasyfork](https://greasyfork.org/en#home-step-1)
  
 
 ### Configure you browser: Chrome
