@@ -35,3 +35,5 @@ run cmd `yarn build`(or `npm run build`), your userscript should be in `dist` fo
 
 ## References
 1. [Tampermonkey docs](https://www.tampermonkey.net/documentation.php)
+2. [Webpack-userscript](https://github.com/momocow/webpack-userscript#readme)
+3. [Webpack](https://webpack.js.org/configuration/)
