@@ -5,8 +5,9 @@ interface IUserscriptConfig {
   /** script file name, without file extension*/
   scriptFileName: string
   /** 
-   * url that userscript works on
+   * a url this userscript works on
    *  webpack will auto open this url after running yarn dev if it's set
+   *    so you can test your userscript immediately
    **/
   openTargetPage?: string
   /**
